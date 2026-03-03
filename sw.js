@@ -1,5 +1,5 @@
 // Simple app-shell service worker
-const CACHE = "angle-meter-v2";
+const CACHE = "angle-meter-v3";
 const ASSETS = [
   "./",
   "./index.html",

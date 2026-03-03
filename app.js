@@ -163,11 +163,11 @@ async function startSensors(){
   setStatus("Žádám o přístup k senzorům…");
   await requestSensorPermissionIfNeeded();
 
-  const ok1 = attachOrientation();
+  const ok1 = false;
   const ok2 = attachMotion();
 
-  if(!ok1 && !ok2){
-    setStatus("Tento prohlížeč nepodporuje DeviceOrientation/DeviceMotion.");
+  if(!ok2){
+    setStatus("Tento prohlížeč nepodporuje DeviceMotion (akcelerometr).");
     return;
   }
 
