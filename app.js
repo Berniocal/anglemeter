@@ -29,15 +29,14 @@ let filt = 0;
 let offset = 0;
 
 // Smoothing: first-order low-pass with time constant tau
-const TAU = 0.10; // seconds (~0.1 s)
+const TAU = 0.50; // seconds (~0,5 s)
 let hzEstimate = 0;
 
 // For display rounding
 function fmtDeg(x){
-  // keep one decimal, show sign
-  const v = Math.round(x * 10) / 10;
-  // Use Czech decimal comma
-  return (v.toFixed(1)).replace(".", ",") + "°";
+  // whole degrees
+  const v = Math.round(x);
+  return `${v}°`;
 }
 
 function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
