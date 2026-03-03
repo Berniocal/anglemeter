@@ -1,0 +1,129 @@
+/* Minimal, touch-friendly UI */
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --text:#e8eefc;
+  --muted:#9fb0d0;
+  --border:rgba(255,255,255,.08);
+  --btn:#1a2744;
+  --btn2:#22335b;
+  --accent:#6aa0ff;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 800px at 20% 10%, #162451, var(--bg));
+  color:var(--text);
+}
+
+.wrap{
+  min-height:100%;
+  padding: max(14px, env(safe-area-inset-top)) 14px max(14px, env(safe-area-inset-bottom));
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.title{
+  font-weight:700;
+  letter-spacing:.2px;
+  opacity:.95;
+}
+.iconBtn{
+  border:1px solid var(--border);
+  background:transparent;
+  color:var(--text);
+  border-radius:12px;
+  padding:10px 12px;
+  font-size:18px;
+}
+
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:16px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.25);
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.modeRow{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:baseline;
+}
+.label{color:var(--muted); font-size:14px}
+.value{font-weight:600}
+
+.angleRow{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  flex:1;
+  padding: 10px 0;
+}
+.angle{
+  font-size: clamp(56px, 10vw, 110px);
+  font-weight:800;
+  letter-spacing:-1px;
+}
+.status{
+  color:var(--muted);
+  font-size:14px;
+  text-align:center;
+  min-height: 18px;
+}
+
+.controls{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.btn{
+  border:1px solid var(--border);
+  background: linear-gradient(180deg, var(--btn2), var(--btn));
+  color:var(--text);
+  border-radius:16px;
+  padding:14px 14px;
+  font-size:16px;
+  font-weight:650;
+  cursor:pointer;
+}
+.btn:active{transform: translateY(1px)}
+.btn.primary{
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(106,160,255,.22);
+  border-color: rgba(106,160,255,.35);
+}
+
+.help{
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  color:var(--muted);
+  font-size:14px;
+}
+.help summary{
+  cursor:pointer;
+  color:var(--text);
+  opacity:.9;
+  font-weight:600;
+}
+.foot{
+  color:var(--muted);
+  font-size:12px;
+  text-align:center;
+}

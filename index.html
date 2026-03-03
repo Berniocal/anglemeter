@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <title>Angle Meter</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="title">Angle Meter</div>
+      <button id="btnFullscreen" class="iconBtn" aria-label="Fullscreen" title="Fullscreen">⛶</button>
+    </header>
+
+    <main class="card">
+      <div class="modeRow">
+        <div class="label">Mód</div>
+        <div id="modeName" class="value">Pitch (dopředu/dozadu)</div>
+      </div>
+
+      <div class="angleRow">
+        <div id="angle" class="angle">--.-°</div>
+        <div id="status" class="status">Čekám na senzory…</div>
+      </div>
+
+      <div class="controls">
+        <button id="btnMode" class="btn primary">Změnit osu</button>
+        <button id="btnZero" class="btn">Vynulovat</button>
+      </div>
+
+      <details class="help">
+        <summary>Tipy / řešení problémů</summary>
+        <ul>
+          <li>Na iPhonu/iPadu je často potřeba nejdřív klepnout na tlačítko, aby prohlížeč povolil senzory.</li>
+          <li>Když se zobrazuje „Senzory nejsou dostupné“, zkuste jiný prohlížeč (Chrome/Edge/Firefox na Androidu, Safari na iOS).</li>
+          <li>Hodnota je vyhlazená (cca 0,1 s), aby nebyla „roztřesená“.</li>
+        </ul>
+      </details>
+    </main>
+
+    <footer class="foot">
+      <span id="sampleInfo">—</span>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
