@@ -29,8 +29,17 @@ let filt = 0;
 let offset = 0;
 
 // Smoothing: first-order low-pass with time constant tau
-const TAU = 0.50; // seconds (~0,5 s)
+const TAU = 0.18; // seconds (~0,18 s) rychlejší odezva
 let hzEstimate = 0;
+
+// Small median filter to suppress spikes (little delay)
+const RAW_BUF = [];
+const RAW_BUF_N = 5;
+function medianOf(arr){
+  const a = arr.slice().sort((x,y)=>x-y);
+  const m = Math.floor(a.length/2);
+  return a.length ? a[m] : 0;
+}
 
 // For display rounding
 function fmtDeg(x){
@@ -76,8 +85,13 @@ function updateAngle(rawDeg, tMs){
     hzEstimate += 0.08 * (hz - hzEstimate);
   }
 
+  // Median pre-filter (reduces jitter without strong lag)
+  RAW_BUF.push(rawDeg);
+  if(RAW_BUF.length > RAW_BUF_N) RAW_BUF.shift();
+  const rawMed = medianOf(RAW_BUF);
+
   const a = clamp(dt / TAU, 0, 1); // filter coefficient
-  filt = filt + a * (rawDeg - filt);
+  filt = filt + a * (rawMed - filt);
 
   const shown = filt - offset;
   angleEl.textContent = fmtDeg(shown);
